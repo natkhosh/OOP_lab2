@@ -1,6 +1,6 @@
 import os
 
-from figures import Figure, Rectangle, Ellipse, CloseFigurez
+from figures import Figure, Rectangle, Ellipse, CloseFigure
 
 import sys
 # Подключаем модули QApplication и QLabel
@@ -54,8 +54,9 @@ if __name__ == '__main__':
 
     # Создайте список фигур
     # figures = []
-    # figures = [Rectangle(0, 0, 200, 100), Rectangle(100, 300, 300, 50)]
-    figures = [Ellipse(20, 30, 400, 200), Ellipse(100, 300, 300, 50)]
+    # figures = [CloseFigure((50, 50), (250, 100), (350, 350), (200, 400), (30, 380), (100, 130), (50, 50))]
+    figures = [Rectangle(10, 10, 200, 100), Rectangle(250, 400, 300, 50), Ellipse(220, 30, 400, 200), Ellipse(340, 300, 300, 50),
+               CloseFigure((50, 50), (250, 100), (350, 350), (200, 400), (30, 380), (100, 130), (50, 50))]
     figure_widget.set_figures(figures)
 
     figure_widget.show()

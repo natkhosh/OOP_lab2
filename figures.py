@@ -107,18 +107,21 @@ class Ellipse(Figure):
         self._height = height
 
     def perimeter(self):
-        return 2 * (self.width + self.height)
+        return 2 * (4 * self.square() + (self.height - self.width) * (self.height - self.width)) / (self.width + self.height)
 
     def square(self):
-        return self.width * self.height
+        return 3.14 * self.width * self.height / 4
 
 
 class CloseFigure(Figure):
     def __init__(self, *args):
-        # n = len(args)
-        for i, item in enumerate(args):
-            self.d[i] = item
-
+        super().__init__()
+        d = []
+        for i in args:
+            temp_d = {}
+            temp_d['x'], temp_d['y'] = i[0], i[1]
+            d.append(temp_d)
+        self.d = d
 
     @property
     def width(self):
@@ -145,3 +148,5 @@ class CloseFigure(Figure):
 
     def square(self):
         return self.width * self.height
+
+

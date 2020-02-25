@@ -56,10 +56,10 @@ class Rectangle(Figure):
         return self._width
 
     @width.setter
-    def width(self, width):
-        if not isinstance(width, int):
+    def width(self, widht):
+        if not isinstance(widht, int):
             raise TypeError
-        self._width = width
+        self._width = widht
 
     @property
     def height(self):
@@ -70,23 +70,18 @@ class Rectangle(Figure):
         if not isinstance(height, int):
             raise TypeError
         self._height = height
-    #
-    #
-    #
-    # def perimeter(self):
-    #     return 2*(self.w+self.h)
-    #
-    # def square(self):
-    #     return self.w*self.h
-    #
-    # def width(self):
-    #     return self.w
-    #
-    # def height(self):
-    #     return self.h
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+    def square(self):
+        return self.width * self.height
+
 
 class Ellipse(Figure):
     def __init__(self, x=0, y=0, w=0, h=0):
+        # self.__x = x
+        # self.__y = y
         super().__init__(x, y)
         self.width = w
         self.height = h
@@ -96,10 +91,10 @@ class Ellipse(Figure):
         return self._width
 
     @width.setter
-    def width(self, width):
-        if not isinstance(width, int):
+    def width(self, widht):
+        if not isinstance(widht, int):
             raise TypeError
-        self._width = width
+        self._width = widht
 
     @property
     def height(self):
@@ -111,11 +106,48 @@ class Ellipse(Figure):
             raise TypeError
         self._height = height
 
+    def perimeter(self):
+        return 2 * (4 * self.square() + (self.height - self.width) * (self.height - self.width)) / (
+                    self.width + self.height)
+
+    def square(self):
+        return 3.14 * self.width * self.height / 4
+
 
 class CloseFigure(Figure):
-    """ Example: CloseFigure([(x0, y0), (x1, y1) .... (xN, yX)])"""
     def __init__(self, *args):
+        super().__init__()
+        d = []
+        for i in args:
+            temp_d = {}
+            temp_d['x'], temp_d['y'] = i[0], i[1]
+            d.append(temp_d)
+        self.d = d
 
-        """args -> ... -> self.d"""
-        self.d = [{"x": x0, "y": y0},
-                  {"x": x1, "y": y1}]
+    @property
+    def width(self):
+        return self._width
+
+    @width.setter
+    def width(self, widht):
+        if not isinstance(widht, int):
+            raise TypeError
+        self._width = widht
+
+    @property
+    def height(self):
+        return self._height
+
+    @height.setter
+    def height(self, height):
+        if not isinstance(height, int):
+            raise TypeError
+        self._height = height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+    def square(self):
+        return self.width * self.height
+
+

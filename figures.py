@@ -117,12 +117,7 @@ class Ellipse(Figure):
 class CloseFigure(Figure):
     def __init__(self, *args):
         super().__init__()
-        d = []
-        for i in args:
-            temp_d = {}
-            temp_d['x'], temp_d['y'] = i[0], i[1]
-            d.append(temp_d)
-        self.d = d
+        self.d = [{'x': i[0], 'y': i[1]} for i in args]
 
     @property
     def width(self):
